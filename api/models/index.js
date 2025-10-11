@@ -1,11 +1,14 @@
 import Sequelize from "sequelize";
+import pg from "pg";
 
-import getUserModel from "./User";
-import getMessageModel from "./Message";
-import getTarefaModel from "./Tarefa";
+import getUserModel from "./User.js";
+import getMessageModel from "./Message.js";
+import getTarefaModel from "./Tarefa.js";
 
-//POSTGRES_URL
-const sequelize = new Sequelize(process.env.POSTGRES_URL, {
+// Prefer DATABASE_URL (common in managed DB providers like Neon)
+const connectionString = process.env.DATABASE_URL ?? process.env.POSTGRES_URL;
+
+const sequelize = new Sequelize(connectionString, {
   dialect: "postgres",
   protocol: "postgres",
   // logging: false, // Disable SQL query logging
@@ -16,7 +19,7 @@ const sequelize = new Sequelize(process.env.POSTGRES_URL, {
       rejectUnauthorized: false,
     },
   },
-  dialectModule: require("pg"),
+  dialectModule: pg,
 });
 
 const models = {

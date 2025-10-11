@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "REST API for a Todo List Mobile App",
   "main": "api/index.js",
+  "type":"module",
   "scripts": {
-    "start": "nodemon --exec babel-node api/index.js"
+    "start": "node local-server.js",
+    "dev": "nodemon --watch api --exec \"node local-server.js\""
   },
   "keywords": [
     "node",
     "express",
     "postgres"
   ],
-  "author": "Marcio Bueno",
+  "author": "Marcos Capella",
   "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.28.3",
