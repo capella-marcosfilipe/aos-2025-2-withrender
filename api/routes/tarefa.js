@@ -19,7 +19,7 @@ router.get("/:tarefaId", async (req, res) => {
 router.post("/", async (req, res) => {
   const tarefa = {
     descricao: req.body.descricao,
-    userId: req.context.me.id,
+    userId: req.body.userId ?? null,
   };
   try {
     const createdTarefa = await req.context.models.Tarefa.create(tarefa);

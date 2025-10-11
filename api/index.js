@@ -4,7 +4,6 @@ import express from "express";
 
 import models, { sequelize } from "./models";
 import routes from "./routes";
-import auth from "./middleware/auth";
 
 const app = express();
 app.set("trust proxy", true);
@@ -34,12 +33,6 @@ app.use(async (req, res, next) => {
 });
 
 app.use("/", routes.root);
-app.use("/login", routes.login);
-
-// A partir daqui, todas as rotas exigirão autenticação
-app.use(auth);
-
-app.use("/session", routes.session);
 app.use("/users", routes.user);
 app.use("/messages", routes.message);
 app.use("/tarefas", routes.tarefa);

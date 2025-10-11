@@ -16,10 +16,14 @@ router.get("/:messageId", async (req, res) => {
 router.post("/", async (req, res) => {
   const message = {
     text: req.body.text,
-    userId: req.context.me.id,
+    userId: req.body.userId ?? null,
   };
-  const createdMessage = await req.context.models.Message.create(message);
-  return res.status(201).send(createdMessage);
+  try {
+    const createdMessage = await req.context.models.Message.create(message);
+    return res.status(201).send(createdMessage);
+  } catch (error) {
+    return res.status(400).send({ error: error.message });
+  }
 });
 
 router.put("/:messageId", async (req, res) => {
