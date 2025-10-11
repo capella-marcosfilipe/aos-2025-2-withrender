@@ -2,7 +2,7 @@
   "name": "todolist-app-api",
   "version": "1.0.0",
   "description": "REST API for a Todo List Mobile App",
-  "main": "index.js",
+  "main": "api/index.js",
   "scripts": {
     "start": "nodemon --exec babel-node api/index.js"
   },
