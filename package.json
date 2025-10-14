@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "REST API for a Todo List Mobile App",
   "main": "api/index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "start": "node local-server.js",
     "dev": "nodemon --watch api --exec \"node local-server.js\""
